@@ -5,3 +5,4 @@ metadata:
   name: myapp
 data:
   foo: bar
+# foo: bar

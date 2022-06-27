@@ -6,24 +6,15 @@ metadata:
     name: myapp
 spec:
   containers:
-  - name: myapp
+  - name: mypod
     image: nginx
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-    ports:
-      - containerPort: 80
-    command: [ "/bin/sh", "-c", "env" ]
-    env:
-      - name: KEY
-        valueFrom:
-          configMapKeyRef:
-            name: map
-            key: foo
+    volumeMounts:
+    - name: foo
+      mountPath: "/etc/foo"
+      readOnly: true
   volumes:
-    - name: map
-      configMap:
-        name: map
+  - name: foo
+    configMap:
+      name: myapp
         
-      
+       
