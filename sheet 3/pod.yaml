@@ -15,8 +15,9 @@ spec:
     ports:
       - containerPort: 80
     volumeMounts:
-      - mountPath: ""
+      - mountPath: "."
         name: map
+        readOnly: true
   volumes:
     - name: map
       configMap:
