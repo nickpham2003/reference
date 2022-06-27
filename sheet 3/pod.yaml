@@ -14,11 +14,16 @@ spec:
         cpu: "500m"
     ports:
       - containerPort: 80
-    volumeMounts:
-      - mountPath: "."
-        name: map
-        readOnly: true
+    command: [ "/bin/sh", "-c", "env" ]
+    env:
+      - name: KEY
+        valueFrom:
+          configMapKeyRef:
+            name: map
+            key: foo
   volumes:
     - name: map
       configMap:
         name: map
+        
+      
